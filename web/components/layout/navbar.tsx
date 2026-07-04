@@ -44,10 +44,10 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full overflow-visible border-b border-brand-blue/10 bg-white/80 backdrop-blur-md supports-[backdrop-filter]:bg-white/70">
-      <div className="mx-auto flex h-24 max-w-7xl items-center justify-between gap-8 overflow-visible px-4 py-6 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-8 overflow-visible px-4 md:h-24 md:py-6 sm:px-6 lg:px-8">
         <Link
           href="/"
-          className="group relative block h-14 w-52 shrink-0 overflow-visible bg-transparent"
+          className="group relative block h-10 w-40 shrink-0 overflow-visible bg-transparent md:h-14 md:w-52"
           onClick={() => setMobileOpen(false)}
         >
           <Image
@@ -113,30 +113,30 @@ export function Navbar() {
         id="mobile-nav"
         aria-label="Mobile navigation"
         className={cn(
-          'fixed inset-0 z-[60] flex h-screen w-full flex-col bg-white/95 backdrop-blur-md transition-[opacity,visibility] duration-300 md:hidden',
+          'fixed inset-0 z-50 flex h-screen w-full flex-col justify-between bg-white/[0.98] p-6 backdrop-blur-xl transition-[opacity,visibility] duration-300 md:hidden',
           mobileOpen
             ? 'visible pointer-events-auto opacity-100'
             : 'invisible pointer-events-none opacity-0'
         )}
         aria-hidden={!mobileOpen}
       >
-        <div className="relative z-50 flex h-24 items-center justify-between px-4 py-6">
+        <div className="relative z-50 flex h-16 items-center justify-between">
           <Link
             href="/"
-            className="relative block h-12 w-44 overflow-visible"
+            className="relative block h-10 w-40 overflow-visible"
             onClick={() => setMobileOpen(false)}
           >
             <Image
               src={siteConfig.brand.logo}
               alt={`${siteConfig.brand.fullName} logo`}
               fill
-              sizes="176px"
+              sizes="160px"
               className="origin-left -ml-3 scale-[2.2] object-contain object-left"
             />
           </Link>
           <button
             type="button"
-            className="relative z-50 inline-flex items-center justify-center rounded-sm p-2 text-brand-blue transition-colors duration-300 hover:text-brand-gold"
+            className="relative z-50 inline-flex items-center justify-center rounded-sm p-3 text-brand-blue transition-colors duration-300 hover:text-brand-gold"
             aria-label="Close menu"
             onClick={() => setMobileOpen(false)}
           >
@@ -153,7 +153,7 @@ export function Navbar() {
           </button>
         </div>
 
-        <nav className="flex flex-1 flex-col justify-center px-4" aria-label="Mobile navigation links">
+        <nav className="flex flex-1 flex-col justify-center" aria-label="Mobile navigation links">
           <ul className="space-y-2">
             {siteConfig.navLinks.map((link, index) => (
               <li
@@ -186,7 +186,7 @@ export function Navbar() {
 
         <div
           className={cn(
-            'px-4 pb-[calc(env(safe-area-inset-bottom)+1.5rem)] transition-all duration-500',
+            'pb-[env(safe-area-inset-bottom)] transition-all duration-500',
             mobileOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
           )}
           style={{ transitionDelay: mobileOpen ? '340ms' : '0ms' }}

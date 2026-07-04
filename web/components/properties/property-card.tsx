@@ -94,7 +94,7 @@ export function PropertyCard({
 
       <div className="flex flex-1 flex-col p-6">
         {property.type && (
-          <p className="text-xs font-semibold uppercase tracking-luxury text-brand-gold">
+          <p className="text-[11px] font-semibold uppercase tracking-widest text-brand-gold sm:text-xs sm:tracking-luxury">
             {property.type}
           </p>
         )}

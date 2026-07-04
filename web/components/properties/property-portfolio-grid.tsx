@@ -54,10 +54,10 @@ function PropertyGrid({ properties }: { properties?: Property[] }) {
   return (
     <>
       {/* Mobile: horizontal swipe rail with a peek of the next card */}
-      <div className="snap-carousel -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 sm:hidden">
+      <div className="snap-carousel -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-6 sm:hidden">
         {safeProperties.map((property) =>
           property?.id ? (
-            <div key={property.id} className="w-[82%] flex-none snap-center">
+            <div key={property.id} className="w-[84vw] shrink-0 snap-center">
               <PropertyCard property={property} locationFields="full-address" />
             </div>
           ) : null,

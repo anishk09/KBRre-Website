@@ -1,5 +1,6 @@
 import { InquiryForm } from '@/components/contact/inquiry-form';
 import { InteriorPageShell } from '@/components/layout/interior-page-shell';
+import { MobileCtaBar } from '@/components/layout/mobile-cta-bar';
 import { siteConfig } from '@/data/site-config';
 
 type ContactPageProps = {
@@ -68,15 +69,7 @@ export default function ContactPage({ searchParams }: ContactPageProps) {
       </div>
       </section>
 
-      {/* Mobile-only floating action bar */}
-      <div className="fixed inset-x-0 bottom-0 z-40 flex gap-3 border-t border-brand-blue/10 bg-white/85 px-4 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] pt-3 shadow-[0_-8px_30px_rgb(0_0_0/0.08)] backdrop-blur-lg md:hidden">
-        <a href={phoneHref} className="btn-primary flex-1">
-          Call Now
-        </a>
-        <a href="#contact-form" className="btn-outline flex-1 bg-white/70">
-          Inquire
-        </a>
-      </div>
+      <MobileCtaBar href={phoneHref} label={`Call ${siteConfig.contact.phone}`} />
     </InteriorPageShell>
   );
 }

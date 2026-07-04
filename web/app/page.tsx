@@ -35,7 +35,7 @@ export default async function HomePage() {
   }
 
   return (
-    <div className="flex flex-1 flex-col">
+    <div className="relative flex w-full max-w-full flex-1 flex-col overflow-x-hidden">
       <HeroSlider slides={commercialSlides} />
 
       {featuredListings.length > 0 && (
@@ -50,9 +50,9 @@ export default async function HomePage() {
             </h2>
 
             {/* Mobile: horizontal swipe rail with a peek of the next card */}
-            <ul className="snap-carousel -mx-4 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 sm:hidden">
+            <ul className="snap-carousel -mx-4 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-6 sm:hidden">
               {featuredListings.map((property) => (
-                <li key={property.id} className="w-[82%] flex-none snap-center">
+                <li key={property.id} className="w-[84vw] shrink-0 snap-center">
                   <PropertyCard property={property} />
                 </li>
               ))}

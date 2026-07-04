@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
+import { MobileCtaBar } from '@/components/layout/mobile-cta-bar';
 import { fetchListingById } from '@/lib/fetch-listings';
 import { buildPropertyInquiryUrl } from '@/lib/contact-url';
 
@@ -34,6 +35,7 @@ export default async function PropertyDetailPage({
   ].filter((metric): metric is { label: string; value: string } => metric !== null);
 
   return (
+    <div className="relative w-full max-w-full overflow-x-hidden">
     <article className="mx-auto max-w-4xl px-4 py-16 pb-32 sm:px-6 md:py-24 lg:px-8">
       {property.imageUrl && (
         <div className="relative mb-10 aspect-[16/9] w-full overflow-hidden rounded-sm border border-brand-dark/[0.06]">
@@ -99,12 +101,9 @@ export default async function PropertyDetailPage({
         </div>
       </div>
 
-      {/* Mobile-only floating action bar */}
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-brand-blue/10 bg-white/85 px-4 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] pt-3 shadow-[0_-8px_30px_rgb(0_0_0/0.08)] backdrop-blur-lg md:hidden">
-        <Link href={inquiryUrl} className="btn-primary w-full">
-          Inquire About Asset
-        </Link>
-      </div>
     </article>
+
+    <MobileCtaBar href={inquiryUrl} label="Inquire About Asset" />
+    </div>
   );
 }

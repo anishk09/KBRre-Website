@@ -1,4 +1,5 @@
 import { InteriorPageShell } from '@/components/layout/interior-page-shell';
+import { MobileCtaBar } from '@/components/layout/mobile-cta-bar';
 import { PropertyPortfolioGrid } from '@/components/properties/property-portfolio-grid';
 import { fetchPortfolios } from '@/lib/fetch-listings';
 import type { PropertyPortfolios } from '@/types/property';
@@ -15,7 +16,7 @@ type PropertiesPageContentProps = {
 function PropertiesPageContent({ listings }: PropertiesPageContentProps) {
   return (
     <InteriorPageShell>
-      <section className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-7xl px-4 pt-16 pb-32 sm:px-6 md:py-24 lg:px-8">
       <div className="divider-gold" />
       <p className="heading-overline mt-6">Portfolio</p>
       <h1 className="heading-display mt-3">Properties</h1>
@@ -26,6 +27,8 @@ function PropertiesPageContent({ listings }: PropertiesPageContentProps) {
 
       <PropertyPortfolioGrid listings={listings} />
       </section>
+
+      <MobileCtaBar href="/contact#contact-form" label="Request Details" />
     </InteriorPageShell>
   );
 }

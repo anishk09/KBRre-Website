@@ -9,7 +9,7 @@ import type { Property } from '@/types/property';
 
 const PLACEHOLDER_IMAGE = '/KBR1.png';
 const ROTATION_MS = 5000;
-const HERO_MIN_HEIGHT = 'min-h-[calc(100dvh-6rem)]';
+const HERO_MIN_HEIGHT = 'min-h-[calc(100dvh-4rem)] md:min-h-[calc(100dvh-6rem)]';
 
 const BRAND_HEADLINE = 'Architecting Institutional Value.';
 const BRAND_SUBHEADLINE =
