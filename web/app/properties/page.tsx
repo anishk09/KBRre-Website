@@ -16,7 +16,8 @@ function PropertiesPageContent({ listings }: PropertiesPageContentProps) {
   return (
     <InteriorPageShell>
       <section className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
-      <p className="heading-overline">Portfolio</p>
+      <div className="divider-gold" />
+      <p className="heading-overline mt-6">Portfolio</p>
       <h1 className="heading-display mt-3">Properties</h1>
       <p className="mt-4 max-w-2xl text-brand-dark/70">
         Browse our current offerings. For confidential details, pricing guidance, or

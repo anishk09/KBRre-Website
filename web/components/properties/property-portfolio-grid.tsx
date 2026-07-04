@@ -92,10 +92,17 @@ function PortfolioSection({
   const safeProperties = Array.isArray(properties) ? properties : [];
 
   return (
-    <section className="relative isolate w-full py-12">
-      <h2 className="mb-6 font-serif text-2xl tracking-tight text-brand-blue sm:mb-8 sm:text-3xl">
-        {title}
-      </h2>
+    <section className="relative isolate w-full py-12 md:py-16">
+      <div className="mb-6 flex flex-wrap items-end justify-between gap-3 border-b border-brand-blue/10 pb-5 sm:mb-8">
+        <h2 className="font-serif text-2xl font-medium tracking-tight text-brand-blue-dark sm:text-3xl">
+          {title}
+        </h2>
+        {safeProperties.length > 0 && (
+          <p className="font-serif text-xs font-semibold uppercase tracking-luxury tabular-nums text-brand-dark/50">
+            {safeProperties.length} {safeProperties.length === 1 ? 'Asset' : 'Assets'}
+          </p>
+        )}
+      </div>
 
       {safeProperties.length === 0 ? (
         <p className="text-brand-dark/70">

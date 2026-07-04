@@ -39,10 +39,15 @@ export default async function HomePage() {
       <HeroSlider slides={commercialSlides} />
 
       {featuredListings.length > 0 && (
-        <section className="border-t border-brand-blue/10 bg-brand-dark/5 py-20">
+        <section className="section-navy py-24 lg:py-32">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <p className="heading-overline">Featured Listings</p>
-            <h2 className="heading-display mt-3 text-2xl sm:text-3xl">Curated Portfolio</h2>
+            <div className="divider-gold" />
+            <p className="mt-6 text-xs font-semibold uppercase tracking-luxury text-brand-gold">
+              Featured Listings
+            </p>
+            <h2 className="mt-3 font-sans text-2xl font-semibold tracking-tight text-white sm:text-3xl md:text-4xl">
+              Curated Portfolio
+            </h2>
 
             {/* Mobile: horizontal swipe rail with a peek of the next card */}
             <ul className="snap-carousel -mx-4 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 sm:hidden">
@@ -61,8 +66,8 @@ export default async function HomePage() {
                 </li>
               ))}
             </ul>
-            <div className="mt-10">
-              <Link href="/properties" className="btn-outline">
+            <div className="mt-12">
+              <Link href="/properties" className="btn-gold">
                 View Full Portfolio
               </Link>
             </div>

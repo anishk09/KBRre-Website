@@ -18,7 +18,8 @@ export default function ContactPage({ searchParams }: ContactPageProps) {
   return (
     <InteriorPageShell>
       <section className="mx-auto max-w-7xl px-4 py-16 pb-32 sm:px-6 md:py-24 lg:px-8">
-      <p className="heading-overline">Contact</p>
+      <div className="divider-gold" />
+      <p className="heading-overline mt-6">Contact</p>
       <h1 className="heading-display mt-3">Get in Touch</h1>
       <p className="mt-6 max-w-2xl text-brand-dark/80">
         Connect with our advisory team for confidential guidance on acquisitions,
@@ -36,7 +37,7 @@ export default function ContactPage({ searchParams }: ContactPageProps) {
                 <p className="text-xs font-semibold uppercase tracking-luxury text-brand-gold">
                   {siteConfig.contact.phoneLabel}
                 </p>
-                <p className="mt-1">
+                <p className="mt-1 tabular-nums">
                   <a href={`tel:${siteConfig.contact.phone.replace(/\D/g, '')}`}>
                     {siteConfig.contact.phone}
                   </a>
@@ -51,7 +52,7 @@ export default function ContactPage({ searchParams }: ContactPageProps) {
           <p className="text-xs font-semibold uppercase tracking-luxury text-brand-gold">
             Inquiry Form
           </p>
-          <h2 className="mt-3 font-serif text-2xl text-brand-blue">
+          <h2 className="mt-3 font-sans text-2xl font-semibold tracking-tight text-brand-blue-dark">
             {propertyTitle ? 'Request Property Details' : 'Send an Inquiry'}
           </h2>
           {propertyTitle && (

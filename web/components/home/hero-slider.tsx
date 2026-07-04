@@ -9,27 +9,30 @@ import type { Property } from '@/types/property';
 
 const PLACEHOLDER_IMAGE = '/KBR1.png';
 const ROTATION_MS = 5000;
-const HERO_MIN_HEIGHT = 'min-h-[calc(100dvh-5rem)]';
+const HERO_MIN_HEIGHT = 'min-h-[calc(100dvh-6rem)]';
 
-const BRAND_HEADLINE = 'Building Communities. Creating Value.';
+const BRAND_HEADLINE = 'Architecting Institutional Value.';
 const BRAND_SUBHEADLINE =
   'A diversified real estate holdings company focused on residential and commercial properties, long-term ownership, and sustainable growth.';
 
 function HeroBrandContent() {
   return (
-    <div className="relative z-20 mx-auto flex min-h-full flex-1 max-w-7xl flex-col justify-center px-4 py-16 sm:px-6 lg:px-8">
-      <p className="heading-overline">{siteConfig.brand.tagline}</p>
-      <h1 className="mt-3 max-w-3xl text-balance font-serif text-3xl font-bold leading-tight tracking-tight text-brand-blue sm:text-5xl lg:text-6xl">
+    <div className="relative z-20 mx-auto flex min-h-full w-full flex-1 max-w-7xl flex-col justify-center px-4 pb-24 pt-16 sm:px-6 sm:pb-32 sm:pt-20 lg:px-8">
+      <div className="divider-gold" />
+      <p className="mt-6 text-xs font-semibold uppercase tracking-luxury text-brand-gold">
+        {siteConfig.brand.tagline}
+      </p>
+      <h1 className="mt-4 font-serif text-2xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:whitespace-nowrap lg:text-5xl">
         {BRAND_HEADLINE}
       </h1>
-      <p className="mt-4 max-w-2xl text-base leading-relaxed text-brand-dark/80 sm:text-xl">
+      <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/80 sm:text-xl">
         {BRAND_SUBHEADLINE}
       </p>
       <div className="mt-8 flex flex-wrap gap-4 sm:mt-10">
-        <Link href="/properties" className="btn-primary">
+        <Link href="/properties" className="btn-gold">
           View Properties
         </Link>
-        <Link href="/contact#contact-form" className="btn-outline">
+        <Link href="/contact#contact-form" className="btn-ghost-light">
           Get in Touch
         </Link>
       </div>
@@ -40,6 +43,7 @@ function HeroBrandContent() {
 function DefaultHero() {
   return (
     <section className={`relative flex w-full flex-1 flex-col overflow-hidden ${HERO_MIN_HEIGHT}`}>
+      <div className="absolute inset-0 animate-pulse bg-neutral-100" aria-hidden="true" />
       <Image
         src={PLACEHOLDER_IMAGE}
         alt="Commercial property entrance"
@@ -49,7 +53,11 @@ function DefaultHero() {
         className="absolute inset-0 z-0 h-full w-full object-cover"
         unoptimized
       />
-      <div className="absolute inset-0 z-10 bg-white/70 backdrop-blur-[2px]" />
+      <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(15,36,64,0.92)_0%,rgba(15,36,64,0.55)_28%,rgba(15,36,64,0)_60%)]" />
+      <div
+        className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/40 via-transparent to-transparent"
+        aria-hidden="true"
+      />
       <HeroBrandContent />
     </section>
   );
@@ -114,6 +122,7 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
 
   return (
     <section className={`relative flex w-full flex-1 flex-col overflow-hidden ${HERO_MIN_HEIGHT}`}>
+      <div className="absolute inset-0 animate-pulse bg-neutral-100" aria-hidden="true" />
       {slideDeck.map((slide, index) => {
         const isActive = index === activeIndex;
         const backgroundSrc =
@@ -142,23 +151,27 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
         );
       })}
 
-      <div className="absolute inset-0 z-10 bg-white/70 backdrop-blur-[2px]" />
+      <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(15,36,64,0.92)_0%,rgba(15,36,64,0.55)_28%,rgba(15,36,64,0)_60%)]" />
+      <div
+        className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/40 via-transparent to-transparent"
+        aria-hidden="true"
+      />
 
       <HeroBrandContent />
 
-      <div className="absolute bottom-4 left-4 right-4 z-20 min-h-[90px] rounded-none border-l-2 border-amber-500/80 bg-zinc-950/70 p-4 text-left shadow-2xl backdrop-blur-md sm:bottom-8 sm:left-auto sm:right-8 sm:min-w-[260px] sm:max-w-sm sm:p-5">
+      <div className="absolute bottom-4 left-4 right-4 z-20 min-h-[90px] rounded-sm border-l-2 border-brand-gold bg-brand-blue-dark/70 p-4 text-left shadow-2xl ring-1 ring-white/10 backdrop-blur-md sm:bottom-8 sm:left-auto sm:right-8 sm:min-w-[260px] sm:max-w-sm sm:p-5">
         {activeSlide ? (
           <div key={activeIndex} className="opacity-100 transition-opacity duration-500">
-            <h4 className="mb-1 font-serif text-lg font-bold leading-snug tracking-tight text-white sm:text-xl md:text-2xl">
+            <h4 className="mb-1.5 font-sans text-lg font-semibold leading-snug tracking-tight text-white sm:text-xl">
               {activeSlide.title || 'KBR Holding'}
             </h4>
-            <p className="text-sm font-medium leading-relaxed text-gray-300">
+            <p className="text-xs font-semibold uppercase tracking-wider text-white/60">
               {activeSlide.type || 'Asset'} · {activeSlide.city || ''},{' '}
               {activeSlide.state || ''}
             </p>
           </div>
         ) : (
-          <div className="text-sm text-gray-400">Loading portfolio…</div>
+          <div className="text-sm text-white/50">Loading portfolio…</div>
         )}
       </div>
     </section>

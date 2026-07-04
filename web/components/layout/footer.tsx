@@ -3,57 +3,64 @@ import Link from 'next/link';
 
 import { siteConfig } from '@/data/site-config';
 
+function ColumnHeader({ children }: { children: string }) {
+  return (
+    <p className="text-xs font-semibold uppercase tracking-wider text-brand-gold">
+      {children}
+    </p>
+  );
+}
+
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="shrink-0 border-t border-brand-blue/10 bg-brand-dark text-white">
-      <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6">
-        <div className="grid gap-8 md:grid-cols-[minmax(0,1.6fr)_auto_auto] md:items-start md:gap-10">
+    <footer className="shrink-0 border-t border-brand-gold/20 bg-brand-blue-dark text-white">
+      <div className="mx-auto max-w-7xl px-6 pb-12 pt-20">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-4 lg:gap-16">
+          {/* Column 1: brand mark + overview */}
           <div>
-            <Link href="/" className="relative -ml-4 block h-20 w-64 overflow-visible">
+            <Link href="/" className="relative -ml-4 block h-[4.5rem] w-60 overflow-visible">
               <Image
                 src="/KBR1.png"
                 alt={`${siteConfig.brand.fullName} logo`}
                 fill
-                className="origin-left scale-[1.65] object-contain object-left"
+                sizes="240px"
+                className="origin-left scale-[1.75] object-contain object-left"
               />
             </Link>
-
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/65">
+            <p className="mt-5 max-w-xs text-base leading-relaxed text-slate-300/90">
               Managing a premier portfolio of private commercial and residential real
               estate assets with absolute integrity and long-term strategic vision.
             </p>
+          </div>
 
-            <div className="mt-5 space-y-2.5 text-sm text-white/65">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-luxury text-brand-gold">
-                  {siteConfig.contact.phoneLabel}
-                </p>
-                <p className="mt-1">
-                  <a
-                    href={`tel:${siteConfig.contact.phone.replace(/\D/g, '')}`}
-                    className="text-white/65 transition-colors duration-300 hover:text-brand-gold focus-visible:ring-offset-brand-dark"
-                  >
-                    {siteConfig.contact.phone}
-                  </a>
-                </p>
-              </div>
-              <p>{siteConfig.contact.address}</p>
+          {/* Column 2: direct contact */}
+          <div>
+            <ColumnHeader>{siteConfig.contact.phoneLabel}</ColumnHeader>
+            <div className="mt-4 space-y-3 text-[15px] leading-relaxed">
+              <p className="text-slate-300">
+                <a
+                  href={`tel:${siteConfig.contact.phone.replace(/\D/g, '')}`}
+                  className="tabular-nums text-slate-300 transition-colors duration-300 hover:text-brand-gold focus-visible:ring-offset-brand-blue-dark"
+                >
+                  {siteConfig.contact.phone}
+                </a>
+              </p>
+              <p className="text-slate-300">{siteConfig.contact.address}</p>
             </div>
           </div>
 
+          {/* Columns 3 and 4: navigation sections */}
           {siteConfig.footerSections.map((section) => (
-            <div key={section.title} className="min-w-[9rem]">
-              <p className="text-xs font-semibold uppercase tracking-luxury text-brand-gold">
-                {section.title}
-              </p>
-              <ul className="mt-3 space-y-2.5">
+            <div key={section.title}>
+              <ColumnHeader>{section.title}</ColumnHeader>
+              <ul className="mt-4 space-y-3">
                 {section.links.map((link) => (
                   <li key={`${section.title}-${link.label}`}>
                     <Link
                       href={link.href}
-                      className="text-sm text-white/65 transition-colors duration-300 hover:text-brand-gold focus-visible:ring-offset-brand-dark"
+                      className="text-[15px] text-slate-300 transition-colors duration-300 hover:text-brand-gold focus-visible:ring-offset-brand-blue-dark"
                     >
                       {link.label}
                     </Link>
@@ -64,27 +71,28 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="divider-gold mt-8" />
+        {/* Sub-footer: full-width hairline boundary + legal row */}
+        <div className="mt-16 border-t border-slate-800/60 pt-8">
+          <div className="flex flex-col items-center justify-between gap-3 font-sans text-[13px] text-slate-400 md:flex-row">
+            <p className="text-slate-400">
+              &copy; {year} {siteConfig.brand.fullName}. All rights reserved.
+            </p>
 
-        <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-white/50">
-            &copy; {year} {siteConfig.brand.fullName}. All rights reserved.
-          </p>
-
-          <nav aria-label="Legal navigation">
-            <ul className="flex flex-wrap gap-x-6 gap-y-2">
-              {siteConfig.legalLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-white/50 transition-colors duration-300 hover:text-brand-gold focus-visible:ring-offset-brand-dark"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+            <nav aria-label="Legal navigation">
+              <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
+                {siteConfig.legalLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-[13px] text-slate-400 transition-colors duration-300 hover:text-brand-gold focus-visible:ring-offset-brand-blue-dark"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
         </div>
       </div>
     </footer>

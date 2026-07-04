@@ -7,12 +7,15 @@ export default function AboutPage() {
   return (
     <InteriorPageShell>
       <section className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
-        <p className="heading-overline">About</p>
+        <div className="divider-gold" />
+        <p className="heading-overline mt-6">About</p>
         <h1 className="heading-display mt-3">KBR Reality Group</h1>
 
         <article className="mt-16 md:mt-20 lg:max-w-4xl">
-          <div className="divider-gold" />
-          <h2 className="mt-8 font-serif text-2xl text-brand-blue md:text-3xl">Our Story</h2>
+          <p className="heading-overline">Our Story</p>
+          <h2 className="mt-3 font-serif text-2xl font-medium tracking-tight text-brand-blue-dark md:text-3xl">
+            Built on Integrity
+          </h2>
           <p className="mt-6 text-base leading-relaxed text-brand-dark/80 md:text-lg md:leading-8">
             {OUR_STORY}
           </p>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -20,13 +20,14 @@
     font-feature-settings: 'kern' 1, 'liga' 1;
   }
 
+  /* Sans-serif by default; serif is reserved for large editorial titles via .heading-display */
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    @apply font-serif text-brand-blue tracking-tight;
+    @apply font-sans text-brand-blue-dark tracking-tight;
   }
 
   h1 {
@@ -34,11 +35,11 @@
   }
 
   h2 {
-    @apply text-2xl sm:text-3xl md:text-4xl font-medium;
+    @apply text-2xl sm:text-3xl md:text-4xl font-semibold;
   }
 
   h3 {
-    @apply text-xl sm:text-2xl md:text-3xl font-medium;
+    @apply text-xl sm:text-2xl md:text-3xl font-semibold;
   }
 
   p {
@@ -85,7 +86,7 @@
   }
 
   .heading-display {
-    @apply font-serif text-brand-blue tracking-tight;
+    @apply font-serif text-brand-blue-dark tracking-tight;
   }
 
   .heading-overline {
@@ -93,19 +94,34 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-sm bg-brand-blue px-6 py-3 text-sm font-medium uppercase tracking-luxury text-white transition-all duration-300 hover:bg-brand-blue-dark hover:shadow-premium active:scale-[0.98];
+    @apply inline-flex items-center justify-center rounded-sm bg-brand-blue-dark px-8 py-3.5 text-sm font-semibold uppercase tracking-luxury text-white transition-all duration-300 hover:bg-brand-gold hover:text-brand-blue-dark hover:shadow-premium-lg active:scale-[0.98];
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center rounded-sm border border-brand-gold px-6 py-3 text-sm font-medium uppercase tracking-luxury text-brand-gold transition-all duration-300 hover:bg-brand-gold hover:text-white hover:shadow-premium active:scale-[0.98];
+    @apply inline-flex items-center justify-center rounded-sm border border-brand-gold px-8 py-3.5 text-sm font-semibold uppercase tracking-luxury text-brand-gold transition-all duration-300 hover:bg-brand-gold hover:text-brand-blue-dark hover:shadow-premium active:scale-[0.98];
+  }
+
+  /* Gold conversion CTA for dark surfaces */
+  .btn-gold {
+    @apply inline-flex items-center justify-center rounded-sm bg-brand-gold px-8 py-3.5 text-sm font-semibold uppercase tracking-luxury text-brand-blue-dark transition-all duration-300 hover:bg-white hover:shadow-premium-lg active:scale-[0.98];
+  }
+
+  /* Ghost CTA for imagery / dark hero surfaces */
+  .btn-ghost-light {
+    @apply inline-flex items-center justify-center rounded-sm border border-white/40 px-8 py-3.5 text-sm font-semibold uppercase tracking-luxury text-white transition-all duration-300 hover:border-white hover:bg-white hover:text-brand-blue-dark active:scale-[0.98];
   }
 
   .card-premium {
-    @apply rounded-sm bg-white shadow-premium transition-all duration-300 hover:-translate-y-1 hover:shadow-premium-lg;
+    @apply rounded-sm border border-brand-dark/[0.06] bg-white shadow-premium transition-all duration-300 hover:-translate-y-1 hover:border-brand-gold/20 hover:shadow-premium-lg;
   }
 
   .section-dark {
     @apply bg-brand-dark text-white;
+  }
+
+  /* Institutional deep-navy band for high-attention sections */
+  .section-navy {
+    @apply bg-brand-blue-dark text-white;
   }
 
   .section-dark h1,
@@ -113,12 +129,27 @@
   .section-dark h3,
   .section-dark h4,
   .section-dark h5,
-  .section-dark h6 {
+  .section-dark h6,
+  .section-navy h1,
+  .section-navy h2,
+  .section-navy h3,
+  .section-navy h4,
+  .section-navy h5,
+  .section-navy h6 {
     @apply text-white;
   }
 
-  .section-dark p {
+  .section-dark p,
+  .section-navy p {
     @apply text-white/75;
+  }
+
+  .section-navy a:not([class*='btn']) {
+    @apply text-white/80;
+  }
+
+  .section-navy a:not([class*='btn']):hover {
+    @apply text-brand-gold;
   }
 
   .divider-gold {
@@ -134,7 +165,7 @@
   }
 
   .legal-prose h2 {
-    @apply mb-3 mt-12 font-serif text-xl text-brand-blue md:mt-14 md:text-2xl;
+    @apply mb-3 mt-12 font-sans text-xl font-semibold text-brand-blue-dark md:mt-14 md:text-2xl;
   }
 
   .legal-prose ul {

@@ -36,7 +36,8 @@ export default async function PropertyDetailPage({
   return (
     <article className="mx-auto max-w-4xl px-4 py-16 pb-32 sm:px-6 md:py-24 lg:px-8">
       {property.imageUrl && (
-        <div className="relative mb-10 aspect-[16/9] w-full overflow-hidden rounded-sm bg-brand-dark/5">
+        <div className="relative mb-10 aspect-[16/9] w-full overflow-hidden rounded-sm border border-brand-dark/[0.06]">
+          <div className="absolute inset-0 animate-pulse bg-neutral-100" aria-hidden="true" />
           <Image
             src={property.imageUrl}
             alt={property.title}
@@ -45,6 +46,10 @@ export default async function PropertyDetailPage({
             sizes="(max-width: 896px) 100vw, 896px"
             priority
             unoptimized
+          />
+          <div
+            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"
+            aria-hidden="true"
           />
         </div>
       )}
@@ -63,7 +68,7 @@ export default async function PropertyDetailPage({
               <p className="text-[10px] font-semibold uppercase tracking-luxury text-brand-gold md:hidden">
                 {label}
               </p>
-              <p className="mt-0.5 font-medium text-brand-dark md:mt-0 md:font-normal">
+              <p className="mt-0.5 font-medium tabular-nums text-brand-dark md:mt-0 md:font-normal">
                 <span className="hidden font-medium text-brand-blue md:inline">{label}: </span>
                 {value}
               </p>
@@ -72,22 +77,23 @@ export default async function PropertyDetailPage({
         </div>
       )}
 
-      <div className="mt-12 rounded-sm border border-brand-blue/10 bg-brand-dark/5 p-8">
-        <p className="text-xs font-semibold uppercase tracking-luxury text-brand-gold">
+      <div className="section-navy mt-12 rounded-sm p-8 md:mt-16 md:p-12">
+        <div className="divider-gold" />
+        <p className="mt-5 text-xs font-semibold uppercase tracking-luxury text-brand-gold">
           Advisory Inquiry
         </p>
-        <h2 className="mt-3 font-serif text-2xl text-brand-blue">
+        <h2 className="mt-3 font-sans text-2xl font-semibold tracking-tight text-white md:text-3xl">
           Interested in this asset?
         </h2>
-        <p className="mt-3 max-w-xl text-brand-dark/70">
+        <p className="mt-3 max-w-xl leading-relaxed text-white/75">
           Our team provides confidential guidance on due diligence, market positioning,
           and next steps. Submit an inquiry to connect with an advisor.
         </p>
-        <div className="mt-6 flex flex-wrap gap-4">
-          <Link href={inquiryUrl} className="btn-primary">
+        <div className="mt-8 flex flex-wrap gap-4">
+          <Link href={inquiryUrl} className="btn-gold">
             Inquire About Asset
           </Link>
-          <Link href="/contact#contact-form" className="btn-outline">
+          <Link href="/contact#contact-form" className="btn-ghost-light">
             General Inquiry
           </Link>
         </div>

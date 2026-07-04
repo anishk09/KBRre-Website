@@ -29,20 +29,33 @@ export function Navbar() {
     };
   }, [mobileOpen]);
 
+  // Force-close the overlay if the viewport grows past the desktop breakpoint,
+  // so a stale open state can never leak over desktop content.
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    const handleChange = (event: MediaQueryListEvent) => {
+      if (event.matches) {
+        setMobileOpen(false);
+      }
+    };
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
+
   return (
     <header className="sticky top-0 z-50 w-full overflow-visible border-b border-brand-blue/10 bg-white/80 backdrop-blur-md supports-[backdrop-filter]:bg-white/70">
-      <div className="mx-auto flex h-24 max-w-7xl items-center justify-between gap-8 overflow-visible px-4 py-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-24 max-w-7xl items-center justify-between gap-8 overflow-visible px-4 py-6 sm:px-6 lg:px-8">
         <Link
           href="/"
-          className="group relative block h-16 w-56 shrink-0 overflow-visible bg-transparent"
+          className="group relative block h-14 w-52 shrink-0 overflow-visible bg-transparent"
           onClick={() => setMobileOpen(false)}
         >
           <Image
             src={siteConfig.brand.logo}
             alt={`${siteConfig.brand.fullName} logo`}
             fill
-            sizes="224px"
-            className="origin-left -ml-6 scale-[2.5] object-contain object-left transition-opacity group-hover:opacity-90"
+            sizes="208px"
+            className="origin-left -ml-5 scale-[2.5] object-contain object-left transition-opacity group-hover:opacity-90"
             priority
           />
         </Link>
@@ -72,7 +85,7 @@ export function Navbar() {
 
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-sm p-2 text-brand-blue transition-colors duration-300 hover:bg-brand-blue/5 hover:text-brand-gold md:hidden"
+          className="relative z-50 inline-flex items-center justify-center rounded-sm p-2 text-brand-blue transition-colors duration-300 hover:bg-brand-blue/5 hover:text-brand-gold md:hidden"
           aria-expanded={mobileOpen}
           aria-controls="mobile-nav"
           aria-label="Open menu"
@@ -100,27 +113,30 @@ export function Navbar() {
         id="mobile-nav"
         aria-label="Mobile navigation"
         className={cn(
-          'fixed inset-0 z-[60] flex flex-col bg-white/95 backdrop-blur-xl transition-opacity duration-300 md:hidden',
-          mobileOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
+          'fixed inset-0 z-[60] flex flex-col bg-white/80 backdrop-blur-xl transition-[opacity,visibility] duration-300 md:hidden',
+          mobileOpen
+            ? 'visible pointer-events-auto opacity-100'
+            : 'invisible pointer-events-none opacity-0'
         )}
+        aria-hidden={!mobileOpen}
       >
-        <div className="flex h-24 items-center justify-between px-4">
+        <div className="relative z-50 flex h-24 items-center justify-between px-4 py-6">
           <Link
             href="/"
-            className="relative block h-14 w-48 overflow-visible"
+            className="relative block h-12 w-44 overflow-visible"
             onClick={() => setMobileOpen(false)}
           >
             <Image
               src={siteConfig.brand.logo}
               alt={`${siteConfig.brand.fullName} logo`}
               fill
-              sizes="192px"
-              className="origin-left -ml-4 scale-[2.2] object-contain object-left"
+              sizes="176px"
+              className="origin-left -ml-3 scale-[2.2] object-contain object-left"
             />
           </Link>
           <button
             type="button"
-            className="inline-flex items-center justify-center rounded-sm p-2 text-brand-blue transition-colors duration-300 hover:text-brand-gold"
+            className="relative z-50 inline-flex items-center justify-center rounded-sm p-2 text-brand-blue transition-colors duration-300 hover:text-brand-gold"
             aria-label="Close menu"
             onClick={() => setMobileOpen(false)}
           >
@@ -151,7 +167,7 @@ export function Navbar() {
                 <Link
                   href={link.href}
                   className={cn(
-                    'block border-b border-brand-blue/10 py-4 font-serif text-2xl tracking-[0.08em] transition-colors duration-300',
+                    'block border-b border-brand-blue/10 py-4 font-sans text-lg font-semibold uppercase tracking-luxury transition-colors duration-300',
                     isActive(link.href)
                       ? 'text-brand-gold'
                       : 'text-brand-blue hover:text-brand-gold'
@@ -182,7 +198,7 @@ export function Navbar() {
           >
             Get in Touch
           </Link>
-          <p className="mt-4 text-center text-xs uppercase tracking-luxury text-brand-dark/50">
+          <p className="mt-4 text-center text-xs font-semibold uppercase tracking-luxury tabular-nums text-brand-dark/50">
             {siteConfig.contact.phoneLabel} · {siteConfig.contact.phone}
           </p>
         </div>

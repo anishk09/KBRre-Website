@@ -20,7 +20,7 @@ export function InquiryForm({ propertyId, propertyTitle }: InquiryFormProps) {
   if (submitted) {
     return (
       <div className="rounded-sm border border-brand-gold/30 bg-brand-gold/5 p-6">
-        <p className="font-serif text-lg text-brand-blue">Thank you for your inquiry.</p>
+        <p className="font-sans text-lg font-semibold text-brand-blue-dark">Thank you for your inquiry.</p>
         <p className="mt-2 text-sm text-brand-dark/70">
           Our team will review your message and follow up shortly. For immediate assistance,
           call us at{' '}
@@ -45,7 +45,7 @@ export function InquiryForm({ propertyId, propertyTitle }: InquiryFormProps) {
             name="name"
             required
             autoComplete="name"
-            className="mt-2 w-full rounded-sm border border-brand-blue/15 bg-white px-4 py-3 text-sm text-brand-dark outline-none transition-colors focus:border-brand-gold"
+            className="mt-2 w-full rounded-sm border border-brand-blue/15 bg-white px-4 py-3 text-sm text-brand-dark outline-none transition-colors duration-300 focus:border-brand-gold focus:ring-1 focus:ring-brand-gold/40"
           />
         </label>
 
@@ -58,7 +58,7 @@ export function InquiryForm({ propertyId, propertyTitle }: InquiryFormProps) {
             name="email"
             required
             autoComplete="email"
-            className="mt-2 w-full rounded-sm border border-brand-blue/15 bg-white px-4 py-3 text-sm text-brand-dark outline-none transition-colors focus:border-brand-gold"
+            className="mt-2 w-full rounded-sm border border-brand-blue/15 bg-white px-4 py-3 text-sm text-brand-dark outline-none transition-colors duration-300 focus:border-brand-gold focus:ring-1 focus:ring-brand-gold/40"
           />
         </label>
       </div>
@@ -71,7 +71,7 @@ export function InquiryForm({ propertyId, propertyTitle }: InquiryFormProps) {
           type="tel"
           name="phone"
           autoComplete="tel"
-          className="mt-2 w-full rounded-sm border border-brand-blue/15 bg-white px-4 py-3 text-sm text-brand-dark outline-none transition-colors focus:border-brand-gold"
+          className="mt-2 w-full rounded-sm border border-brand-blue/15 bg-white px-4 py-3 text-sm text-brand-dark outline-none transition-colors duration-300 focus:border-brand-gold focus:ring-1 focus:ring-brand-gold/40"
         />
       </label>
 
@@ -104,7 +104,7 @@ export function InquiryForm({ propertyId, propertyTitle }: InquiryFormProps) {
               ? `I would like to learn more about ${propertyTitle}.`
               : undefined
           }
-          className="mt-2 w-full resize-y rounded-sm border border-brand-blue/15 bg-white px-4 py-3 text-sm text-brand-dark outline-none transition-colors focus:border-brand-gold"
+          className="mt-2 w-full resize-y rounded-sm border border-brand-blue/15 bg-white px-4 py-3 text-sm text-brand-dark outline-none transition-colors duration-300 focus:border-brand-gold focus:ring-1 focus:ring-brand-gold/40"
         />
       </label>
 
