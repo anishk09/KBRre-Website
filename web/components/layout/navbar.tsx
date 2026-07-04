@@ -113,7 +113,7 @@ export function Navbar() {
         id="mobile-nav"
         aria-label="Mobile navigation"
         className={cn(
-          'fixed inset-0 z-[60] flex flex-col bg-white/80 backdrop-blur-xl transition-[opacity,visibility] duration-300 md:hidden',
+          'fixed inset-0 z-[60] flex h-screen w-full flex-col bg-white/95 backdrop-blur-md transition-[opacity,visibility] duration-300 md:hidden',
           mobileOpen
             ? 'visible pointer-events-auto opacity-100'
             : 'invisible pointer-events-none opacity-0'
