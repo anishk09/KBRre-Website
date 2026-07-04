@@ -72,7 +72,7 @@ export function PropertyCard({
               src={imageUrl}
               alt={title}
               fill
-              className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+              className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               unoptimized
             />
@@ -94,13 +94,18 @@ export function PropertyCard({
           )}
         </div>
 
-        <h2 className="mt-2 font-serif text-xl text-brand-blue">
-          <Link href={`/properties/${property.id}`} className="hover:text-brand-gold">
+        <h2 className="mt-2 font-serif text-xl leading-snug tracking-tight text-brand-blue">
+          <Link
+            href={`/properties/${property.id}`}
+            className="transition-colors duration-300 hover:text-brand-gold"
+          >
             {title}
           </Link>
         </h2>
 
-        {location && <p className="mt-2 text-sm text-brand-dark/70">{location}</p>}
+        {location && (
+          <p className="mt-2 text-sm leading-relaxed text-brand-dark/70">{location}</p>
+        )}
 
         {metadataChips.length > 0 && (
           <div className="mt-4 flex flex-wrap gap-2">
@@ -116,7 +121,7 @@ export function PropertyCard({
           </Link>
           <Link
             href={`/properties/${property.id}`}
-            className="text-center text-sm font-medium uppercase tracking-luxury text-brand-blue hover:text-brand-gold"
+            className="text-center text-sm font-medium uppercase tracking-luxury text-brand-blue transition-colors duration-300 hover:text-brand-gold"
           >
             View Listing
           </Link>

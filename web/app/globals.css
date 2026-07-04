@@ -16,7 +16,7 @@
   }
 
   body {
-    @apply text-brand-dark font-sans antialiased;
+    @apply text-brand-dark font-sans antialiased overflow-x-clip;
     font-feature-settings: 'kern' 1, 'liga' 1;
   }
 
@@ -30,15 +30,15 @@
   }
 
   h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl font-medium;
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium;
   }
 
   h2 {
-    @apply text-3xl md:text-4xl font-medium;
+    @apply text-2xl sm:text-3xl md:text-4xl font-medium;
   }
 
   h3 {
-    @apply text-2xl md:text-3xl font-medium;
+    @apply text-xl sm:text-2xl md:text-3xl font-medium;
   }
 
   p {
@@ -51,6 +51,11 @@
 
   a:hover {
     @apply text-brand-gold;
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    @apply rounded-sm outline-none ring-2 ring-brand-gold/70 ring-offset-2 ring-offset-white;
   }
 
   ::selection {
@@ -88,15 +93,15 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-sm bg-brand-blue px-6 py-3 text-sm font-medium uppercase tracking-luxury text-white transition-colors duration-200 hover:bg-brand-blue-dark;
+    @apply inline-flex items-center justify-center rounded-sm bg-brand-blue px-6 py-3 text-sm font-medium uppercase tracking-luxury text-white transition-all duration-300 hover:bg-brand-blue-dark hover:shadow-premium active:scale-[0.98];
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center rounded-sm border border-brand-gold px-6 py-3 text-sm font-medium uppercase tracking-luxury text-brand-gold transition-colors duration-200 hover:bg-brand-gold hover:text-white;
+    @apply inline-flex items-center justify-center rounded-sm border border-brand-gold px-6 py-3 text-sm font-medium uppercase tracking-luxury text-brand-gold transition-all duration-300 hover:bg-brand-gold hover:text-white hover:shadow-premium active:scale-[0.98];
   }
 
   .card-premium {
-    @apply rounded-sm bg-white shadow-premium transition-shadow duration-300 hover:shadow-premium-lg;
+    @apply rounded-sm bg-white shadow-premium transition-all duration-300 hover:-translate-y-1 hover:shadow-premium-lg;
   }
 
   .section-dark {
@@ -164,5 +169,16 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Horizontal swipe rails for mobile property cards */
+  .snap-carousel {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .snap-carousel::-webkit-scrollbar {
+    display: none;
   }
 }

@@ -33,7 +33,7 @@ export function Footer() {
                 <p className="mt-1">
                   <a
                     href={`tel:${siteConfig.contact.phone.replace(/\D/g, '')}`}
-                    className="text-white/65 transition-colors hover:text-brand-gold"
+                    className="text-white/65 transition-colors duration-300 hover:text-brand-gold focus-visible:ring-offset-brand-dark"
                   >
                     {siteConfig.contact.phone}
                   </a>
@@ -53,7 +53,7 @@ export function Footer() {
                   <li key={`${section.title}-${link.label}`}>
                     <Link
                       href={link.href}
-                      className="text-sm text-white/65 transition-colors hover:text-brand-gold"
+                      className="text-sm text-white/65 transition-colors duration-300 hover:text-brand-gold focus-visible:ring-offset-brand-dark"
                     >
                       {link.label}
                     </Link>
@@ -77,7 +77,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/50 transition-colors hover:text-brand-gold"
+                    className="text-sm text-white/50 transition-colors duration-300 hover:text-brand-gold focus-visible:ring-offset-brand-dark"
                   >
                     {link.label}
                   </Link>

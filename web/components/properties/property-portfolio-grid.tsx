@@ -52,17 +52,31 @@ function PropertyGrid({ properties }: { properties?: Property[] }) {
   }
 
   return (
-    <div className="mx-auto mb-12 grid max-w-6xl grid-cols-1 gap-6 px-6 md:grid-cols-2 lg:grid-cols-3">
-      {safeProperties.map((property) =>
-        property?.id ? (
-          <PropertyCard
-            key={property.id}
-            property={property}
-            locationFields="full-address"
-          />
-        ) : null,
-      )}
-    </div>
+    <>
+      {/* Mobile: horizontal swipe rail with a peek of the next card */}
+      <div className="snap-carousel -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 sm:hidden">
+        {safeProperties.map((property) =>
+          property?.id ? (
+            <div key={property.id} className="w-[82%] flex-none snap-center">
+              <PropertyCard property={property} locationFields="full-address" />
+            </div>
+          ) : null,
+        )}
+      </div>
+
+      {/* Tablet and desktop: standard grid */}
+      <div className="hidden grid-cols-1 gap-6 sm:grid sm:grid-cols-2 lg:grid-cols-3">
+        {safeProperties.map((property) =>
+          property?.id ? (
+            <PropertyCard
+              key={property.id}
+              property={property}
+              locationFields="full-address"
+            />
+          ) : null,
+        )}
+      </div>
+    </>
   );
 }
 
@@ -79,10 +93,12 @@ function PortfolioSection({
 
   return (
     <section className="relative isolate w-full py-12">
-      <h2 className="mb-8 block w-full px-6 font-serif text-3xl text-brand-blue">{title}</h2>
+      <h2 className="mb-6 font-serif text-2xl tracking-tight text-brand-blue sm:mb-8 sm:text-3xl">
+        {title}
+      </h2>
 
       {safeProperties.length === 0 ? (
-        <p className="w-full px-6 text-brand-dark/70">
+        <p className="text-brand-dark/70">
           No {emptyLabel.toLowerCase()} listings available yet.
         </p>
       ) : (
@@ -101,8 +117,8 @@ export function PropertyPortfolioGrid({ listings, properties }: PropertyPortfoli
 
   if (!hasAnyListings) {
     return (
-      <div className="py-12 text-center text-gray-500">
-        No properties available in the current portfolio portfolio configuration.
+      <div className="py-12 text-center text-brand-dark/60">
+        No properties available in the current portfolio.
       </div>
     );
   }

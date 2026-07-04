@@ -18,11 +18,9 @@ export default async function HomePage() {
 
   try {
     const portfolios = await fetchPortfolios();
-    console.log('Server Page Portfolio Fetch Check:', portfolios);
 
     commercialSlides = portfolios?.commercial || [];
     if (commercialSlides.length === 0) {
-      console.log('Warning: commercial key empty, merging flat fallback listings');
       const allListings = await fetchListings();
       commercialSlides = allListings.filter(
         (p) => p.portfolio === 'commercial' || p.type.toLowerCase() !== 'residential',
@@ -44,8 +42,19 @@ export default async function HomePage() {
         <section className="border-t border-brand-blue/10 bg-brand-dark/5 py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <p className="heading-overline">Featured Listings</p>
-            <h2 className="heading-display mt-3 text-3xl">Curated Portfolio</h2>
-            <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <h2 className="heading-display mt-3 text-2xl sm:text-3xl">Curated Portfolio</h2>
+
+            {/* Mobile: horizontal swipe rail with a peek of the next card */}
+            <ul className="snap-carousel -mx-4 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 sm:hidden">
+              {featuredListings.map((property) => (
+                <li key={property.id} className="w-[82%] flex-none snap-center">
+                  <PropertyCard property={property} />
+                </li>
+              ))}
+            </ul>
+
+            {/* Tablet and desktop: standard grid */}
+            <ul className="mt-10 hidden gap-6 sm:grid sm:grid-cols-2 lg:grid-cols-3">
               {featuredListings.map((property) => (
                 <li key={property.id}>
                   <PropertyCard property={property} />

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
+import { Analytics } from '@vercel/analytics/next';
 
 import { Footer } from '@/components/layout/footer';
 import { Navbar } from '@/components/layout/navbar';
@@ -22,6 +23,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Navbar />
         <main className="flex w-full flex-1 flex-grow flex-col bg-transparent">{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );

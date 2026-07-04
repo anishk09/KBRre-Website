@@ -13,9 +13,11 @@ export default function ContactPage({ searchParams }: ContactPageProps) {
   const propertyId = searchParams?.property;
   const propertyTitle = searchParams?.propertyTitle;
 
+  const phoneHref = `tel:${siteConfig.contact.phone.replace(/\D/g, '')}`;
+
   return (
     <InteriorPageShell>
-      <section className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-7xl px-4 py-16 pb-32 sm:px-6 md:py-24 lg:px-8">
       <p className="heading-overline">Contact</p>
       <h1 className="heading-display mt-3">Get in Touch</h1>
       <p className="mt-6 max-w-2xl text-brand-dark/80">
@@ -64,6 +66,16 @@ export default function ContactPage({ searchParams }: ContactPageProps) {
         </div>
       </div>
       </section>
+
+      {/* Mobile-only floating action bar */}
+      <div className="fixed inset-x-0 bottom-0 z-40 flex gap-3 border-t border-brand-blue/10 bg-white/85 px-4 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] pt-3 shadow-[0_-8px_30px_rgb(0_0_0/0.08)] backdrop-blur-lg md:hidden">
+        <a href={phoneHref} className="btn-primary flex-1">
+          Call Now
+        </a>
+        <a href="#contact-form" className="btn-outline flex-1 bg-white/70">
+          Inquire
+        </a>
+      </div>
     </InteriorPageShell>
   );
 }

@@ -19,13 +19,13 @@ function HeroBrandContent() {
   return (
     <div className="relative z-20 mx-auto flex min-h-full flex-1 max-w-7xl flex-col justify-center px-4 py-16 sm:px-6 lg:px-8">
       <p className="heading-overline">{siteConfig.brand.tagline}</p>
-      <h1 className="mt-3 max-w-3xl text-balance font-serif text-4xl font-bold tracking-tight text-brand-blue sm:text-5xl lg:text-6xl">
+      <h1 className="mt-3 max-w-3xl text-balance font-serif text-3xl font-bold leading-tight tracking-tight text-brand-blue sm:text-5xl lg:text-6xl">
         {BRAND_HEADLINE}
       </h1>
-      <p className="mt-4 max-w-2xl text-lg text-brand-dark/80 sm:text-xl">
+      <p className="mt-4 max-w-2xl text-base leading-relaxed text-brand-dark/80 sm:text-xl">
         {BRAND_SUBHEADLINE}
       </p>
-      <div className="mt-10 flex flex-wrap gap-4">
+      <div className="mt-8 flex flex-wrap gap-4 sm:mt-10">
         <Link href="/properties" className="btn-primary">
           View Properties
         </Link>
@@ -146,23 +146,21 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
 
       <HeroBrandContent />
 
-      <div className="absolute bottom-8 right-8 z-20 min-h-[90px] min-w-[260px] max-w-sm rounded-none border-l-2 border-amber-500/80 bg-zinc-950/70 p-5 text-left shadow-2xl backdrop-blur-md">
+      <div className="absolute bottom-4 left-4 right-4 z-20 min-h-[90px] rounded-none border-l-2 border-amber-500/80 bg-zinc-950/70 p-4 text-left shadow-2xl backdrop-blur-md sm:bottom-8 sm:left-auto sm:right-8 sm:min-w-[260px] sm:max-w-sm sm:p-5">
         {activeSlide ? (
           <div key={activeIndex} className="opacity-100 transition-opacity duration-500">
-            <h4 className="mb-1 font-serif text-xl font-bold tracking-tight text-white md:text-2xl">
+            <h4 className="mb-1 font-serif text-lg font-bold leading-snug tracking-tight text-white sm:text-xl md:text-2xl">
               {activeSlide.title || 'KBR Holding'}
             </h4>
-            <p className="text-sm font-medium text-gray-300">
+            <p className="text-sm font-medium leading-relaxed text-gray-300">
               {activeSlide.type || 'Asset'} · {activeSlide.city || ''},{' '}
               {activeSlide.state || ''}
             </p>
           </div>
         ) : (
-          <div className="text-sm text-gray-400">Loading portfolio data rows...</div>
+          <div className="text-sm text-gray-400">Loading portfolio…</div>
         )}
       </div>
     </section>
   );
 }
-
-export { HeroSlider };
